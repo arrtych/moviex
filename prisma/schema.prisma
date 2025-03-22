@@ -24,3 +24,12 @@ model User {
 }
 
 
+model Movie {
+  @@map("movies")
+  id          Int      @id @default(autoincrement())
+  name       String
+  alternativeName String
+  year    Int
+  description String
+  createdAt DateTime @default(now()) @map("created_at")
+}
