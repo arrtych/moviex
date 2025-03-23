@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "pnpm run next dev",
+    "build": "pnpm run next build",
+    "start": "pnpm run next start",
+    "lint": "pnpm run next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -61,6 +61,7 @@
     "@tanstack/react-query": "latest"
   },
   "devDependencies": {
+    "@agentdeskai/browser-tools-server": "1.2.0",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
