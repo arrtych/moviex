@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL") // Direct connection for migrations
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  reviews   Review[]
+  ratings   Rating[]
+}
+
+model Movie {
+  id          String   @id @default(cuid())
+  tmdbId      String   @unique // ID from TMDB API
+  title       String
+  overview    String?
+  posterPath  String?
+  releaseDate DateTime?
+  voteAverage Float?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  reviews     Review[]
+  ratings     Rating[]
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  movieId   String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie     Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([movieId])
+}
+
+model Rating {
+  id        String   @id @default(cuid())
+  value     Int      @db.SmallInt // 1-10 rating
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  movieId   String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie     Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId]) // One rating per user per movie
+  @@index([userId])
+  @@index([movieId])
+}
