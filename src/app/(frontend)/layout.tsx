@@ -1,7 +1,7 @@
 import type React from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import '@/styles/globals.css'
+import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/header'
 import { MovieProvider } from '@/context/movie-context'
@@ -42,5 +42,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-
-import './globals.css'
