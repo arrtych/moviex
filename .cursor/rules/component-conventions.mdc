@@ -1,0 +1,69 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Component Conventions
+
+This project follows specific conventions for React components with PayloadCMS integration:
+
+## Server Components (Default)
+All components in the `app` directory are Server Components by default. They:
+- Can be async
+- Can directly fetch data using PayloadCMS Local API
+- Cannot use hooks or browser APIs
+- Cannot use event handlers
+
+Example location: [src/app/page.tsx](mdc:src/app/page.tsx)
+
+## Client Components
+Components that need interactivity are marked with 'use client':
+- Must be marked with 'use client' at the top
+- Can use hooks and browser APIs
+- Can handle user events
+- Cannot be async
+- Use TanStack Query for data fetching
+
+Example location: [src/components](mdc:src/components)
+
+## UI Components
+We use Radix UI primitives for accessible components:
+- Accordion (@radix-ui/react-accordion)
+- Dialog (@radix-ui/react-dialog)
+- Dropdown (@radix-ui/react-dropdown-menu)
+- Popover (@radix-ui/react-popover)
+- And many more Radix components
+
+## PayloadCMS Components
+Custom components for PayloadCMS admin:
+- Located in `src/admin/components`
+- Override default admin UI components
+- Use PayloadCMS component props
+- Follow PayloadCMS component patterns
+
+## Component Organization
+- Components are organized by feature/domain
+- Shared components go in `src/components`
+- Page-specific components live alongside their pages
+- PayloadCMS components in `src/admin/components`
+- Each component should have:
+  - Main component file (index.tsx)
+  - Types (types.ts)
+  - Styles (if needed)
+  - Tests (*.test.tsx)
+
+## Naming Conventions
+- PascalCase for component files and directories
+- Descriptive names that indicate purpose
+- Suffix test files with .test.tsx
+- Use index.tsx for main component file
+- Prefix PayloadCMS admin components with 'Admin'
+
+## State Management
+- Use React Query for server state
+- React Context for global UI state
+- Local state with useState
+- PayloadCMS state via Local API
+
+
+
