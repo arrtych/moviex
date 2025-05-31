@@ -1,0 +1,41 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# NextJS Project Structure Guidelines
+
+## App Directory Structure
+```
+app/
+├── (auth)/           # Authentication related routes
+├── api/             # API routes
+├── components/      # Shared components
+│   ├── ui/         # UI components
+│   └── forms/      # Form components
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions and configurations
+├── styles/         # Global styles
+└── types/          # TypeScript type definitions
+```
+
+## Component Guidelines
+- Use kebab-case for component file names (e.g., `user-profile.tsx`)
+- Place page-specific components in their respective page directories
+- Keep shared components in the `components/` directory
+- Use Server Components by default, only use Client Components when necessary
+
+## File Naming Conventions
+- Page files: `page.tsx`
+- Layout files: `layout.tsx`
+- Loading states: `loading.tsx`
+- Error handling: `error.tsx`
+- Route handlers: `route.ts`
+
+## Best Practices
+- Implement proper error boundaries
+- Add loading states for data fetching
+- Use TypeScript for type safety
+- Follow accessibility guidelines
+- Optimize images using Next.js Image component
+- Implement proper SEO meta tags

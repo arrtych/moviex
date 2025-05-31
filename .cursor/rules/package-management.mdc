@@ -1,0 +1,50 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Package Management Guidelines
+
+## PNPM Usage
+- Use pnpm as the default package manager
+- Always commit both `package.json` and `pnpm-lock.yaml`
+- Use exact versions for critical dependencies
+
+## Configuration
+```
+# .npmrc configuration
+engine-strict=true
+auto-install-peers=true
+shamefully-hoist=true
+```
+
+## Common Commands
+- Install dependencies: `pnpm install`
+- Add dependency: `pnpm add <package>`
+- Add dev dependency: `pnpm add -D <package>`
+- Remove dependency: `pnpm remove <package>`
+- Run scripts: `pnpm run <script>`
+
+## Version Management
+- Use exact versions (no ^ or ~) for critical dependencies
+- Use caret (^) for flexible updates on non-critical packages
+- Regularly update dependencies for security patches
+- Test thoroughly after dependency updates
+
+## Dependencies Structure
+```json
+{
+  "dependencies": {
+    "next": "15.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.4.0"
+  },
+  "devDependencies": {
+    "typescript": "5.4.0",
+    "@types/react": "18.2.0",
+    "@types/node": "20.0.0"
+  }
+}
+```
+

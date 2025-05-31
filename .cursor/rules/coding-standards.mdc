@@ -1,0 +1,65 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Coding Standards and Best Practices
+
+## TypeScript Usage
+- Use strict TypeScript configuration
+- Define interfaces for all props and state
+- Avoid using `any` type
+- Use proper type annotations for functions and variables
+
+## Component Structure
+```typescript
+// Example component structure
+import { type FC } from 'react'
+import { cn } from '@/lib/utils'
+
+interface ComponentProps {
+  title: string
+  className?: string
+}
+
+const Component: FC<ComponentProps> = ({
+  title,
+  className
+}) => {
+  return (
+    <div className={cn('base-styles', className)}>
+      {title}
+    </div>
+  )
+}
+
+export default Component
+```
+
+## Styling Guidelines
+- Use TailwindCSS for styling
+- Prefer composition with `cn()` utility
+- Use semantic class naming
+- Follow mobile-first approach
+- Use CSS variables for theme values
+
+## Event Handling
+- Prefix event handlers with 'handle'
+- Use proper TypeScript event types
+- Implement proper error handling
+- Add loading states for async operations
+
+## Accessibility
+- Use semantic HTML elements
+- Add ARIA labels where necessary
+- Ensure keyboard navigation
+- Implement proper focus management
+- Test with screen readers
+
+## Performance
+- Use React Server Components where possible
+- Implement proper code splitting
+- Optimize images and assets
+- Use proper caching strategies
+- Minimize client-side JavaScript
+
