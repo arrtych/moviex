@@ -1,0 +1,69 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Routing Conventions
+
+This project uses Next.js App Router with PayloadCMS integration:
+
+## File Conventions
+- [src/app/page.tsx](mdc:src/app/page.tsx): Root page
+- [src/app/layout.tsx](mdc:src/app/layout.tsx): Root layout
+- `loading.tsx`: Loading UI
+- `error.tsx`: Error boundaries
+- `not-found.tsx`: 404 pages
+
+## Route Groups
+- (payload): PayloadCMS routes
+  - `/admin`: Admin panel
+  - `/api`: REST API
+  - `/api/graphql`: GraphQL API
+- (main): Main application routes
+- Use parentheses for organization without affecting URL structure
+
+## Dynamic Routes
+- `[id]`: Dynamic segment
+- `[...slug]`: Catch-all segment
+- `[[...slug]]`: Optional catch-all segment
+- `[collection]`: PayloadCMS collection routes
+
+## PayloadCMS Routes
+Located in `app/(payload)`:
+```ts
+// Admin routes
+app/(payload)/admin/[[...segments]]/page.tsx
+// API routes
+app/(payload)/api/[collection]/route.ts
+// GraphQL routes
+app/(payload)/api/graphql/route.ts
+```
+
+## Metadata
+Define metadata in layout.tsx or page.tsx:
+```ts
+export const metadata = {
+  title: 'Page Title',
+  description: 'Page description'
+}
+```
+
+## Navigation
+- Use `next/link` for client-side navigation
+- Use `useRouter` for programmatic navigation
+- Use PayloadCMS Link component in admin
+- Avoid using `window.location` directly
+
+## Authentication
+- PayloadCMS handles auth routes
+- `/admin/login`: Admin login
+- `/api/users/login`: User login API
+- Protected routes via middleware
+
+## API Routes
+- REST: `/api/[collection]`
+- GraphQL: `/api/graphql`
+- Custom: Create in `app/api`
+- PayloadCMS: Auto-generated CRUD
+
+

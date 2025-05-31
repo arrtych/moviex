@@ -1,0 +1,55 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Structure Guide
+
+This project is built with Next.js 15.3.0 and PayloadCMS 3.33.0, using TypeScript and modern tooling.
+
+## Core Directories
+- [src/app](mdc:src/app): Next.js 13+ App Router and PayloadCMS routes
+  - `(payload)`: PayloadCMS admin panel and API routes
+  - `(main)`: Main application routes
+- [src/components](mdc:src/components): Reusable React components with Radix UI primitives
+- [src/collections](mdc:src/collections): PayloadCMS collection definitions
+- [src/lib](mdc:src/lib): Utility functions and shared logic
+- [src/context](mdc:src/context): React context providers
+- [src/hooks](mdc:src/hooks): Custom React hooks
+- [src/types](mdc:src/types): TypeScript type definitions
+- [src/providers](mdc:src/providers): Higher-order provider components
+
+## Configuration Files
+- [next.config.mjs](mdc:next.config.mjs): Next.js and PayloadCMS configuration
+- [tailwind.config.ts](mdc:tailwind.config.ts): Tailwind CSS configuration
+- [tsconfig.json](mdc:tsconfig.json): TypeScript configuration
+- [package.json](mdc:package.json): Project dependencies and scripts
+- [payload.config.ts](mdc:src/payload.config.ts): PayloadCMS configuration
+
+## Key Dependencies
+- Next.js: 15.3.0
+- PayloadCMS: 3.33.0
+- React: 19.1.0
+- TypeScript: 5.7.3
+- Radix UI Components
+- TanStack Query
+- Tailwind CSS
+
+## PayloadCMS Integration
+- Admin Panel: `/admin`
+- REST API: `/api`
+- GraphQL API: `/api/graphql`
+- Collections: Defined in `src/collections`
+- Authentication: Built-in with PayloadCMS
+- Database: PostgreSQL via @payloadcms/db-postgres
+
+## App Router Structure
+The `src/app` directory uses Next.js App Router conventions:
+- `layout.tsx`: Root layout component
+- `page.tsx`: Page components
+- Route groups: Organized using the (folder) convention
+- Server Components: Default for all components
+- Client Components: Marked with 'use client' directive
+
+
+

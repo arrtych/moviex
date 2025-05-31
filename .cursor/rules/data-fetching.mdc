@@ -1,0 +1,93 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Data Fetching Patterns
+
+This project uses Next.js 13+ data fetching patterns with PayloadCMS integration:
+
+## PayloadCMS Local API
+Server Components can fetch data directly using PayloadCMS Local API:
+
+```tsx
+import { getPayload } from 'payload'
+import config from '@payload-config'
+
+async function getData() {
+  const payload = await getPayload({ config })
+  const data = await payload.find({
+    collection: 'posts',
+    depth: 2,
+  })
+  return data
+}
+
+export default async function Page() {
+  const data = await getData()
+  return <div>{/* Use data */}</div>
+}
+```
+
+## Client-Side Data Fetching
+Use TanStack Query for client components:
+
+```tsx
+'use client'
+import { useQuery } from '@tanstack/react-query'
+
+export default function PostList() {
+  const { data } = useQuery({
+    queryKey: ['posts'],
+    queryFn: () => fetch('/api/posts').then(res => res.json())
+  })
+  return <div>{/* Use data */}</div>
+}
+```
+
+## Authentication
+PayloadCMS provides built-in auth functions:
+```tsx
+import { login, logout } from '@payloadcms/next/auth'
+
+// Server actions
+async function loginAction(email: string, password: string) {
+  return login({
+    collection: 'users',
+    email,
+    password,
+  })
+}
+```
+
+## Caching Behavior
+- Default: `cache: 'force-cache'` (Static Data)
+- No Cache: `cache: 'no-store'` (Dynamic Data)
+- Revalidate: `next: { revalidate: 60 }` (ISR)
+
+## Data Fetching Locations
+- [src/app](mdc:src/app): Page-level data fetching
+- [src/lib](mdc:src/lib): Reusable data fetching utilities
+- [src/collections](mdc:src/collections): PayloadCMS collection definitions
+- [src/hooks](mdc:src/hooks): Client-side data fetching hooks
+
+## PayloadCMS APIs
+- REST API: `/api/[collection]`
+- GraphQL: `/api/graphql`
+- Admin API: Built into admin panel
+- Local API: Direct database access
+
+## Error Handling
+- Use try/catch in Server Components
+- Create error.tsx files for error boundaries
+- Handle loading states with loading.tsx
+- PayloadCMS validation errors
+
+## Security
+- Always validate data
+- Use environment variables for sensitive data
+- Implement proper error handling
+- Sanitize user inputs
+- Use PayloadCMS access control
+
+
