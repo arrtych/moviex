@@ -16,7 +16,7 @@ export interface Storage {
   id: string
   name: string
   path: string
-  type: "local" | "network" | "external" | "cloud"
+  type: 'local' | 'network' | 'external' | 'cloud'
   totalSpace?: number // in GB
   freeSpace?: number // in GB
 }
@@ -24,7 +24,7 @@ export interface Storage {
 export interface LibraryItem {
   id: string
   movieId: string
-  status: "downloaded" | "downloading" | "paused" | "deleted"
+  status: 'downloaded' | 'downloading' | 'paused' | 'deleted'
   size: number // in MB
   downloadedSize: number // in MB
   path: string
@@ -49,50 +49,25 @@ export interface DownloadCandidate {
 export interface Movie {
   // Basic identifiers
   id: string
-  kinopoiskId?: number
-  kinopoiskHDId?: string
-  imdbId?: string
-
-  // Titles
+  kinopoiskId: number
   title: string
-  nameRu?: string
-  nameEn?: string
-  nameOriginal?: string
+  slug: string
 
-  // URLs and media
+  // Media and URLs
   posterPath: string
   backdropPath: string
-  posterUrl?: string
-  posterUrlPreview?: string
-  coverUrl?: string
-  logoUrl?: string
-  webUrl?: string
   trailerUrl?: string
 
   // Basic info
-  slug: string
   overview: string
-  description?: string
-  shortDescription?: string
-  editorAnnotation?: string
-  slogan?: string
-
-  // Dates and times
   releaseDate: string
-  year?: number
-  startYear?: number
-  endYear?: number
-  lastSync?: string
-
-  // Duration
   duration: number // in minutes
-  filmLength?: number
+  type: 'movie' | 'serial' | 'tv-show' | 'mini-series' | 'video'
 
   // Categories
   genres: string[]
-  countries?: Country[]
   tags: string[]
-  type: "movie" | "serial" | "tv-show" | "mini-series" | "video"
+  labels?: MovieLabel[]
 
   // People
   director: string
@@ -103,51 +78,19 @@ export interface Movie {
     imdb: number
     kinopoisk: number
   }
-  ratingKinopoisk?: number
-  ratingKinopoiskVoteCount?: number
-  ratingImdb?: number
-  ratingImdbVoteCount?: number
-  ratingFilmCritics?: number
-  ratingFilmCriticsVoteCount?: number
-  ratingRfCritics?: number
-  ratingRfCriticsVoteCount?: number
-  ratingGoodReview?: number
-  ratingGoodReviewVoteCount?: number
-  ratingAwait?: number
-  ratingAwaitCount?: number
-  reviewsCount?: number
-
-  // Classifications
-  ratingMpaa?: string
-  ratingAgeLimits?: string
-
-  // Flags
-  hasImax?: boolean
-  has3D?: boolean
-  isTicketsAvailable?: boolean
-  serial?: boolean
-  shortFilm?: boolean
-  completed?: boolean
-
-  // Status
-  productionStatus?: string
-
-  // App-specific fields
-  progress?: number // For continue watching
-  labels?: MovieLabel[] // Add labels to the Movie interface
 
   // Series-specific fields
-  seasons?: number // Number of seasons for serials
-  episodes?: number // Total number of episodes for serials
+  seasons?: number
+  episodes?: number
   lastWatchedEpisode?: {
     season: number
     episode: number
     title: string
-  } // Last watched episode for serials
+  }
 }
 
 export interface UserPreferences {
-  theme: "light" | "dark" | "system"
+  theme: 'light' | 'dark' | 'system'
   language: string
 }
 
@@ -171,7 +114,7 @@ export interface Favorite {
 
 export interface Notification {
   id: string
-  type: "new_content" | "recommendation" | "system"
+  type: 'new_content' | 'recommendation' | 'system'
   title: string
   message: string
   movieId?: string
@@ -182,7 +125,7 @@ export interface Notification {
 // Update feed item types to include download status updates
 export interface FeedItem {
   id: string
-  type: "collection_add" | "like" | "watched_episode" | "download_status"
+  type: 'collection_add' | 'like' | 'watched_episode' | 'download_status'
   userId: string
   movieId: string
   createdAt: string
@@ -190,7 +133,7 @@ export interface FeedItem {
   season?: number // For watched_episode type
   episode?: number // For watched_episode type
   episodeTitle?: string // For watched_episode type
-  downloadStatus?: "downloaded" | "paused" | "deleted" // For download_status type
+  downloadStatus?: 'downloaded' | 'paused' | 'deleted' // For download_status type
   size?: number // For download_status type
   quality?: string // For download_status type
 }
@@ -235,4 +178,3 @@ export interface Director {
   imdbId?: string
   movieIds: string[] // References to movies directed by this person
 }
-

@@ -10,6 +10,7 @@ import { useMovies } from '@/context/movie-context'
 import { useToast } from '@/hooks/use-toast'
 import { useQuery } from '@tanstack/react-query'
 import type { Movie, LibraryItem } from '@/types/movie'
+import { getMovieUrl } from '@/utils/url'
 import CollectionModal from './collection-modal'
 
 interface FilmCardProps {
@@ -114,7 +115,7 @@ export default function FilmCard({
   return (
     <>
       <Link
-        href={`/film/${movie.slug}`}
+        href={getMovieUrl(movie)}
         className={`block relative rounded-lg overflow-hidden group ${
           isActive ? 'movie-card-active' : 'movie-card-hover'
         } max-w-[${

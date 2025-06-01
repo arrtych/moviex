@@ -27,6 +27,7 @@ export async function GET() {
   const movies: Movie[] = [
     {
       id: '1',
+      kinopoiskId: 447301,
       title: 'Inception',
       slug: 'inception',
       overview:
@@ -49,6 +50,7 @@ export async function GET() {
     },
     {
       id: '2',
+      kinopoiskId: 326,
       title: 'The Shawshank Redemption',
       slug: 'the-shawshank-redemption',
       overview:
@@ -70,6 +72,7 @@ export async function GET() {
     },
     {
       id: '3',
+      kinopoiskId: 251733,
       title: 'The Dark Knight',
       slug: 'the-dark-knight',
       overview:
@@ -92,6 +95,7 @@ export async function GET() {
     },
     {
       id: '4',
+      kinopoiskId: 334,
       title: 'Pulp Fiction',
       slug: 'pulp-fiction',
       overview:
@@ -113,6 +117,7 @@ export async function GET() {
     },
     {
       id: '5',
+      kinopoiskId: 301,
       title: 'The Matrix',
       slug: 'the-matrix',
       overview:
@@ -135,6 +140,7 @@ export async function GET() {
     },
     {
       id: '6',
+      kinopoiskId: 350,
       title: 'Goodfellas',
       slug: 'goodfellas',
       overview:
@@ -157,6 +163,7 @@ export async function GET() {
     // Add serial content
     {
       id: '7',
+      kinopoiskId: 404900,
       title: 'Breaking Bad',
       slug: 'breaking-bad',
       overview:
@@ -185,6 +192,7 @@ export async function GET() {
     },
     {
       id: '8',
+      kinopoiskId: 464963,
       title: 'Game of Thrones',
       slug: 'game-of-thrones',
       overview:
@@ -213,6 +221,7 @@ export async function GET() {
     },
     {
       id: '9',
+      kinopoiskId: 464963,
       title: 'Stranger Things',
       slug: 'stranger-things',
       overview:
@@ -241,6 +250,7 @@ export async function GET() {
     },
     {
       id: '10',
+      kinopoiskId: 1044280,
       title: 'The Mandalorian',
       slug: 'the-mandalorian',
       overview:
@@ -270,6 +280,7 @@ export async function GET() {
     // Additional movies that won't be in the library
     {
       id: '21',
+      kinopoiskId: 258687,
       title: 'Interstellar',
       slug: 'interstellar',
       overview:
@@ -291,6 +302,7 @@ export async function GET() {
     },
     {
       id: '22',
+      kinopoiskId: 342,
       title: 'The Godfather',
       slug: 'the-godfather',
       overview:
@@ -312,6 +324,7 @@ export async function GET() {
     },
     {
       id: '23',
+      kinopoiskId: 589290,
       title: 'Blade Runner 2049',
       slug: 'blade-runner-2049',
       overview:
@@ -333,6 +346,7 @@ export async function GET() {
     },
     {
       id: '24',
+      kinopoiskId: 1043758,
       title: 'Parasite',
       slug: 'parasite',
       overview:
@@ -354,6 +368,7 @@ export async function GET() {
     },
     {
       id: '25',
+      kinopoiskId: 409424,
       title: 'Dune',
       slug: 'dune',
       overview:
@@ -375,6 +390,7 @@ export async function GET() {
     },
     {
       id: '26',
+      kinopoiskId: 345,
       title: 'The Silence of the Lambs',
       slug: 'the-silence-of-the-lambs',
       overview:
@@ -396,6 +412,7 @@ export async function GET() {
     },
     {
       id: '27',
+      kinopoiskId: 328,
       title: 'The Lord of the Rings: The Fellowship of the Ring',
       slug: 'the-lord-of-the-rings-the-fellowship-of-the-ring',
       overview:
@@ -417,6 +434,7 @@ export async function GET() {
     },
     {
       id: '28',
+      kinopoiskId: 645118,
       title: 'Whiplash',
       slug: 'whiplash',
       overview:
@@ -438,6 +456,7 @@ export async function GET() {
     },
     {
       id: '29',
+      kinopoiskId: 1263663,
       title: "The Queen's Gambit",
       slug: 'the-queens-gambit',
       overview:
@@ -466,6 +485,7 @@ export async function GET() {
     },
     {
       id: '30',
+      kinopoiskId: 1227803,
       title: 'Chernobyl',
       slug: 'chernobyl',
       overview:

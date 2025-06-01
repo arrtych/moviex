@@ -44,6 +44,7 @@ export interface MovieDetails {
   slogan?: string
   type: 'FILM' | 'TV_SERIES'
   webUrl?: string
+  slug: string // URL-friendly identifier
   budget?: {
     value: number
     currency: string

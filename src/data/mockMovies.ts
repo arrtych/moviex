@@ -5,6 +5,7 @@ export const mockMovies: MovieDetails[] = [
     kinopoiskId: 111543,
     nameRu: 'Темный рыцарь',
     nameOriginal: 'The Dark Knight',
+    slug: 'the-dark-knight',
     posterUrl:
       'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/4057c4b8-8208-4a04-b169-26b0661453e3/300x450',
     coverUrl:
@@ -51,6 +52,7 @@ export const mockMovies: MovieDetails[] = [
     kinopoiskId: 447301,
     nameRu: 'Начало',
     nameOriginal: 'Inception',
+    slug: 'inception',
     posterUrl:
       'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/0b76b2a2-d1c7-4f04-a284-80ff7bb709a4/300x450',
     coverUrl:
@@ -88,6 +90,7 @@ export const mockMovies: MovieDetails[] = [
     kinopoiskId: 258687,
     nameRu: 'Интерстеллар',
     nameOriginal: 'Interstellar',
+    slug: 'interstellar',
     posterUrl:
       'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/4057c4b8-8208-4a04-b169-26b0661453e3/300x450',
     coverUrl:
@@ -125,6 +128,7 @@ export const mockMovies: MovieDetails[] = [
     kinopoiskId: 342,
     nameRu: 'Криминальное чтиво',
     nameOriginal: 'Pulp Fiction',
+    slug: 'pulp-fiction',
     posterUrl:
       'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/4057c4b8-8208-4a04-b169-26b0661453e3/300x450',
     coverUrl:
@@ -161,6 +165,7 @@ export const mockMovies: MovieDetails[] = [
     kinopoiskId: 464963,
     nameRu: 'Игра престолов',
     nameOriginal: 'Game of Thrones',
+    slug: 'game-of-thrones',
     posterUrl:
       'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/0b76b2a2-d1c7-4f04-a284-80ff7bb709a4/300x450',
     coverUrl:
@@ -198,6 +203,7 @@ export const mockMovies: MovieDetails[] = [
     kinopoiskId: 404900,
     nameRu: 'Во все тяжкие',
     nameOriginal: 'Breaking Bad',
+    slug: 'breaking-bad',
     posterUrl:
       'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/0b76b2a2-d1c7-4f04-a284-80ff7bb709a4/300x450',
     coverUrl:
@@ -234,13 +240,7 @@ export const mockMovies: MovieDetails[] = [
 ]
 
 export const findMovieBySlug = (slug: string): MovieDetails | undefined => {
-  return mockMovies.find((movie) => {
-    const movieSlug = (movie.nameOriginal || movie.nameRu || '')
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '')
-    return `${movieSlug}-${movie.kinopoiskId}` === slug
-  })
+  return mockMovies.find((movie) => movie.slug === slug)
 }
 
 export const findMovieById = (id: number): MovieDetails | undefined => {
