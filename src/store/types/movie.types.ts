@@ -6,50 +6,68 @@ export interface Genre {
   genre: string
 }
 
-export interface MovieDetails {
+// Essential fields that are always used in the UI
+export interface MovieEssentials {
   kinopoiskId: number
-  kinopoiskHDId: string
-  imdbId: string
   nameRu: string
-  nameEn: string | null
   nameOriginal: string
   posterUrl: string
-  posterUrlPreview: string
-  coverUrl: string
-  logoUrl: string
-  reviewsCount: number
-  ratingGoodReview: number
-  ratingGoodReviewVoteCount: number
+  year: number
+  description: string
+  genres: Genre[]
+  countries: Country[]
+  filmLength: number
   ratingKinopoisk: number
-  ratingKinopoiskVoteCount: number
   ratingImdb: number
-  ratingImdbVoteCount: number
-  ratingFilmCritics: number
-  ratingFilmCriticsVoteCount: number
-  ratingAwait: number | null
-  ratingAwaitCount: number
-  ratingRfCritics: number | null
-  ratingRfCriticsVoteCount: number
-  webUrl: string
+  slug: string // URL-friendly name
+}
+
+// All other fields are optional and can be used in the future
+export interface MovieDetails {
+  kinopoiskId: number
+  nameRu?: string
+  nameOriginal?: string
+  posterUrl: string
+  coverUrl?: string
+  ratingKinopoisk?: number
+  ratingImdb?: number
   year: number
   filmLength: number
-  slogan: string
-  description: string
-  shortDescription: string
-  editorAnnotation: string | null
-  isTicketsAvailable: boolean
-  productionStatus: string | null
-  type: string
-  ratingMpaa: string
-  ratingAgeLimits: string
-  countries: Country[]
-  genres: Genre[]
-  startYear: number | null
-  endYear: number | null
-  serial: boolean
-  shortFilm: boolean
-  completed: boolean
-  hasImax: boolean
-  has3D: boolean
-  lastSync: string
+  description?: string
+  shortDescription?: string
+  ratingMpaa?: string
+  ratingAgeLimits?: string
+  genres: { genre: string }[]
+  countries: { country: string }[]
+  hasAwards?: boolean
+  facts?: string[]
+  slogan?: string
+  type: 'FILM' | 'TV_SERIES'
+  webUrl?: string
+  budget?: {
+    value: number
+    currency: string
+  }
+  fees?: {
+    world: {
+      value: number
+      currency: string
+    }
+    russia: {
+      value: number
+      currency: string
+    }
+    usa: {
+      value: number
+      currency: string
+    }
+  }
+  // TV Series specific fields
+  seasons?: number
+  episodes?: number
+  lastWatchedEpisode?: {
+    season: number
+    episode: number
+    title: string
+  }
 }

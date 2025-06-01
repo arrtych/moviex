@@ -1,6 +1,7 @@
 'use client'
 
 import { MovieDetails } from '@/components/MovieDetails'
+import { notFound } from 'next/navigation'
 
 interface MoviePageProps {
   params: {
@@ -11,9 +12,9 @@ interface MoviePageProps {
 export default function MoviePage({ params }: MoviePageProps) {
   const movieId = parseInt(params.id, 10)
 
-  return (
-    <main className="container mx-auto py-8">
-      <MovieDetails movieId={movieId} />
-    </main>
-  )
+  if (isNaN(movieId)) {
+    notFound()
+  }
+
+  return <MovieDetails movieId={movieId} />
 }
