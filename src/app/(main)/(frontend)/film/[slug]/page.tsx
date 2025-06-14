@@ -3,6 +3,7 @@
 import { MovieDetails } from '@/components/MovieDetails'
 import { findMovieBySlug } from '@/data/mockMovies'
 import { notFound } from 'next/navigation'
+import React from 'react'
 
 interface FilmPageProps {
   params: {
@@ -11,7 +12,8 @@ interface FilmPageProps {
 }
 
 export default function FilmPage({ params }: FilmPageProps) {
-  const movie = findMovieBySlug(params.slug)
+  const { slug } = React.use(params)
+  const movie = findMovieBySlug(slug)
 
   if (!movie) {
     notFound()
